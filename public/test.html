@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Test</title>
+    <link rel="stylesheet" href="/_next/static/css/styles.css"> 
+    <link rel="stylesheet" href="/temp-output.css"> 
+
+    <style>
+        /* Add some inline CSS to ensure SOMETHING renders */
+        body {
+            background-color: lightblue !important;
+            font-family: sans-serif;
+        }
+        .test-text {
+            color: darkgreen;
+            font-size: 32px;
+            font-weight: bold;
+            margin-top: 50px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="test-text">If you see this text, inline CSS works!</h1>
+    <div class="bg-blue-500 text-white p-4 rounded mt-8 mx-auto w-64 text-center">
+        This box should be blue with Tailwind!
+    </div>
+    <p class="text-red-500 font-bold text-xl text-center mt-4">This text should be red with Tailwind!</p>
+</body>
+</html>

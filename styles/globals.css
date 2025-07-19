@@ -1,26 +1,127 @@
+/* styles/globals.css */
+
+/* Tailwind CSS Import for v4 - MUST be at the very top */
 @import "tailwindcss";
 
+/* Define custom CSS variables for your color palette */
+/* These variables are used by the base HTML/body styles and components. */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Force light color scheme for consistency */
+  color-scheme: light;
+
+  /* Base colors for light theme (from tailwind.config.js) */
+  --background-color-body: theme('colors.bg-light');
+  --text-color-body: theme('colors.text-medium');
+  --text-color-heading: theme('colors.text-dark');
+
+  /* Brand and Accent colors (from tailwind.config.js) */
+  --color-brand-primary: theme('colors.brand-primary');
+  --color-brand-secondary: theme('colors.brand-secondary');
+  --color-brand-accent: theme('colors.brand-accent');
+
+  /* UI specific colors (from tailwind.config.js) */
+  --color-bg-card: theme('colors.bg-card');
+  --color-border-light: theme('colors.border-light');
+  --color-hover-light: theme('colors.hover-light');
+
+  /* Shadow colors (from tailwind.config.js) */
+  --color-shadow-dark: theme('colors.shadow-dark');
+  --color-shadow-medium: theme('colors.shadow.medium'); /* Corrected access */
+
+  /* Font family variables for custom fonts */
+  --font-inter: 'Inter', sans-serif;
+  --font-poppins: 'Poppins', sans-serif;
+  --font-fira-code: 'Fira Code', monospace; /* For optional code blocks */
 }
 
+/* Map custom CSS variables to Tailwind's theme in v4 (using @theme inline) */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Map theme colors to your CSS variables */
+  --color-background: var(--background-color-body);
+  --color-foreground: var(--text-color-body);
+  --color-text-dark: var(--text-color-heading);
+
+  /* Map brand colors */
+  --color-brand-primary: var(--color-brand-primary);
+  --color-brand-secondary: var(--color-brand-secondary);
+  --color-brand-accent: var(--color-brand-accent);
+
+  /* Map UI colors */
+  --color-bg-card: var(--color-bg-card);
+  --color-border-light: var(--color-border-light);
+  --color-hover-light: var(--color-hover-light);
+
+  /* Map font families */
+  --font-inter: var(--font-inter);
+  --font-poppins: var(--font-poppins);
+  --font-fira-code: var(--font-fira-code);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* Custom Global Styles for HTML/Body elements */
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: var(--font-inter), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  line-height: 1.6;
+  font-size: 18px;
+  color: var(--text-color-body) !important; /* Added !important to force light theme text color */
+  background: linear-gradient(135deg, var(--background-color-body) 0%, var(--background-color-body) 100%),
+              url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%239C92AC' fill-opacity='0.1' fill-rule='evenodd'%3E%3Cpath d='M0 0h30v15H0V0zm0 30h30v15H0V30zM30 15h30v15H30V15zm0 30h30v15H30V45z'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 100%, 60px 60px;
+  background-attachment: fixed;
+  min-height: 100vh;
+  scroll-behavior: smooth;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-poppins);
+  color: var(--text-color-heading) !important; /* Added !important to force heading color */
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Custom Keyframe Animations (Standard CSS, works in v4) */
+@keyframes fadeInSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Animation utility classes (applied directly in JSX) */
+.animate-fade-in-slide-up {
+  animation: fadeInSlideUp 0.8s ease-out forwards;
+}
+
+.animate-fade-in-scale {
+  animation: fadeInScale 0.6s ease-out forwards;
+}
+
+/* Input/Button focus styles for accessibility and design consistency */
+input:focus, textarea:focus, button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px theme('colors.brand-primary / 0.4');
 }
