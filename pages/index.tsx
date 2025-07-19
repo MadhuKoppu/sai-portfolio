@@ -71,7 +71,7 @@ const Home: NextPage = () => {
         >
           <div className="w-48 h-48 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-3xl overflow-hidden bg-bg-card bg-opacity-90 backdrop-blur-lg border border-border-light shadow-soft-lg flex items-center justify-center p-2 sm:p-4 transition-all duration-300 hover:shadow-soft-xl hover:-translate-y-0.5">
             <Image
-              src="/sai-profile.jpg"
+              src="/saiProfile1.jpg"
               alt="Saikumar Pakkir Profile"
               width={320}
               height={320}
