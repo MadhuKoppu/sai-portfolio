@@ -4,29 +4,28 @@
 @import "tailwindcss";
 
 /* Define custom CSS variables for your color palette */
-/* These variables are used by the base HTML/body styles and components. */
 :root {
-  /* Force light color scheme for consistency */
+  /* Force light color scheme for consistency across browsers */
   color-scheme: light;
 
-  /* Base colors for light theme (from tailwind.config.js) */
-  --background-color-body: theme('colors.bg-light');
-  --text-color-body: theme('colors.text-medium');
-  --text-color-heading: theme('colors.text-dark');
+  /* Base colors for light theme */
+  --background-color-body: #F8FAFC; /* Matches bg-light from tailwind.config.js */
+  --text-color-body: #4B5563; /* Matches text-medium */
+  --text-color-heading: #1F2937; /* Matches text-dark */
 
-  /* Brand and Accent colors (from tailwind.config.js) */
-  --color-brand-primary: theme('colors.brand-primary');
-  --color-brand-secondary: theme('colors.brand-secondary');
-  --color-brand-accent: theme('colors.brand-accent');
+  /* Brand and Accent colors */
+  --color-brand-primary: #4F46E5;
+  --color-brand-secondary: #8B5CF6;
+  --color-brand-accent: #10B981;
 
-  /* UI specific colors (from tailwind.config.js) */
-  --color-bg-card: theme('colors.bg-card');
-  --color-border-light: theme('colors.border-light');
-  --color-hover-light: theme('colors.hover-light');
+  /* UI specific colors */
+  --color-bg-card: #FFFFFF;
+  --color-border-light: #E5E7EB;
+  --color-hover-light: #EEF2FF;
 
-  /* Shadow colors (from tailwind.config.js) */
-  --color-shadow-dark: theme('colors.shadow-dark');
-  --color-shadow-medium: theme('colors.shadow.medium'); /* Corrected access */
+  /* Shadow colors (defined as variables for easy use in custom CSS) */
+  --color-shadow-dark: rgba(0,0,0,0.08);
+  --color-shadow-medium: rgba(0,0,0,0.05);
 
   /* Font family variables for custom fonts */
   --font-inter: 'Inter', sans-serif;
@@ -34,7 +33,9 @@
   --font-fira-code: 'Fira Code', monospace; /* For optional code blocks */
 }
 
-/* Map custom CSS variables to Tailwind's theme in v4 (using @theme inline) */
+/* Tailwind CSS v4's @theme inline directive */
+/* This maps your CSS variables to Tailwind's internal theme system.
+   This allows you to use your custom colors like 'bg-brand-primary' directly in JSX. */
 @theme inline {
   /* Map theme colors to your CSS variables */
   --color-background: var(--background-color-body);
@@ -57,7 +58,12 @@
   --font-fira-code: var(--font-fira-code);
 }
 
+/* IMPORTANT: REMOVED @media (prefers-color-scheme: dark) BLOCK */
+/* By removing this block, we prevent automatic dark mode overrides.
+   Your site will now consistently render in the light scheme. */
+
 /* Custom Global Styles for HTML/Body elements */
+/* These styles directly apply to base HTML elements, and use your defined CSS variables. */
 html,
 body {
   padding: 0;
@@ -65,9 +71,9 @@ body {
   font-family: var(--font-inter), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   line-height: 1.6;
   font-size: 18px;
-  color: var(--text-color-body) !important; /* Added !important to force light theme text color */
-  background: linear-gradient(135deg, var(--background-color-body) 0%, var(--background-color-body) 100%),
-              url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%239C92AC' fill-opacity='0.1' fill-rule='evenodd'%3E%3Cpath d='M0 0h30v15H0V0zm0 30h30v15H0V30zM30 15h30v15H30V15zm0 30h30v15H30V45z'/%3E%3C/g%3E%3C/svg%3E");
+  /* Explicitly set colors from your light theme variables */
+  color: var(--text-color-body) !important; /* Added !important for stubborn overrides */
+  background: linear-gradient(135deg, var(--background-color-body) 0%, var(--background-color-body) 100%) !important; /* Added !important */
   background-size: 100%, 60px 60px;
   background-attachment: fixed;
   min-height: 100vh;
@@ -76,7 +82,7 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-poppins);
-  color: var(--text-color-heading) !important; /* Added !important to force heading color */
+  color: var(--text-color-heading) !important; /* Added !important */
 }
 
 a {
