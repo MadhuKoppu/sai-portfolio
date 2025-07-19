@@ -82,7 +82,7 @@ const Projects: NextPage = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
       >
-        Here are some of my significant projects from my **~20 years of experience**, showcasing my expertise in **Full Stack Development, Microservices, Cloud Architecture, and UI/UX**. Each project highlights my commitment to building robust, scalable, and efficient software solutions across various industries.
+        Here are some of my significant projects from my <strong>6 years of experience</strong>, showcasing my expertise in <strong>Full Stack Development, Microservices, Cloud Architecture, and UI/UX</strong>. Each project highlights my commitment to building robust, scalable, and efficient software solutions across various industries.
       </motion.p>
 
       <motion.div

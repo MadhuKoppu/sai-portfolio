@@ -24,7 +24,7 @@ const Resume: NextPage = () => {
         My Professional Journey 📄
       </h1>
       <p className="text-lg text-text-medium mb-10 max-w-3xl mx-auto animate-fade-in-slide-up delay-200">
-        You can view my full professional resume below or download it for your convenience. It details my **~20 years of experience** as a Full Stack Developer, showcasing my expertise in **React, Next.js, Redux, Sagas, AWS, and more**.
+        You can view my full professional resume below or download it for your convenience. It details my <strong> 6 years of experience</strong> as a Full Stack Developer, showcasing my expertise in <strong>Java, Speing, React, Next.js, Redux, Sagas, AWS, and more</strong>.
       </p>
 
       <motion.div
