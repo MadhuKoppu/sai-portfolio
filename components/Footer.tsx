@@ -10,7 +10,7 @@ const Footer: React.FC = () => {
         <p className="mt-2">
         </p>
         <div className="mt-4 space-x-4">
-          <a href="https://www.linkedin.com/in/saikumar-pakkir/" target="_blank" rel="noopener noreferrer" className="text-brand-primary hover:text-brand-secondary transition duration-300">
+          <a href="https://www.linkedin.com/in/saikumar-p/" target="_blank" rel="noopener noreferrer" className="text-brand-primary hover:text-brand-secondary transition duration-300">
             LinkedIn
           </a>
           {/* Add other social links with icons if desired */}
