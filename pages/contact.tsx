@@ -19,10 +19,10 @@ const Contact: NextPage = () => {
       </Head>
 
       <h1 className="text-5xl font-heading text-center text-text-dark mb-8 animate-fade-in-slide-up">
-        Let's Connect! ✉️
+        Let&apos;s Connect! ✉️
       </h1>
       <p className="text-lg text-text-medium text-center mb-12 max-w-2xl mx-auto animate-fade-in-slide-up delay-200">
-        Have a project in mind, a question about my work, or just want to chat about technology? I'm always open to discussing new opportunities and collaborations.
+        Have a project in mind, a question about my work, or just want to chat about technology? I&apos;m always open to discussing new opportunities and collaborations.
       </p>
 
       <motion.div

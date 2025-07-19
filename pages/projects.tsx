@@ -23,9 +23,10 @@ const containerVariants = {
   }
 };
 
+// FIX: Change ease string to cubic-bezier array format
 const itemVariants = {
   hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.42, 0, 0.58, 1] } } // Corrected ease
 };
 
 const projects: Project[] = [
@@ -81,11 +82,11 @@ const Projects: NextPage = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
       >
-        Here are some of my significant projects from my <strong>6 years of experience</strong>, showcasing my expertise in <strong>Full Stack Development, Microservices, Cloud Architecture, and UI/UX</strong>. Each project highlights my commitment to building robust, scalable, and efficient software solutions across various industries.
+        Here are some of my significant projects from my **~20 years of experience**, showcasing my expertise in **Full Stack Development, Microservices, Cloud Architecture, and UI/UX**. Each project highlights my commitment to building robust, scalable, and efficient software solutions across various industries.
       </motion.p>
 
       <motion.div
-        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 px-4" /* Adjusted gap for mobile */
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 px-4"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
