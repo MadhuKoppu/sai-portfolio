@@ -1,7 +1,7 @@
 // pages/projects.tsx
 import Head from 'next/head';
 import ProjectCard from '../components/ProjectCard';
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion'; // Import Variants
 import type { NextPage } from 'next';
 import React from 'react';
 
@@ -13,7 +13,7 @@ export interface Project {
   link: string;
 }
 
-const containerVariants = {
+const containerVariants: Variants = { // Explicitly type containerVariants
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -23,10 +23,10 @@ const containerVariants = {
   }
 };
 
-// FIX: Change ease string to cubic-bezier array format
-const itemVariants = {
+// FIX: Explicitly type itemVariants and ensure ease is a tuple for cubic-bezier
+const itemVariants: Variants = {
   hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.42, 0, 0.58, 1] } } // Corrected ease
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.42, 0, 0.58, 1] as [number, number, number, number] } } // Corrected ease and type assertion
 };
 
 const projects: Project[] = [
@@ -46,7 +46,7 @@ const projects: Project[] = [
   },
   {
     id: 3,
-    title: 'Customer Service Portal & APIs (Gap Inc.)',
+    title: 'Customer Service Portal & APIs (Gap Inc.))',
     description: 'Designed and developed UI for Customer Service Modules and Reports using Angular 7, TypeScript, HTML, and CSS. Developed lightweight backend APIs using Node.js and Express.js to complement ReactJS frontends, enhancing full-stack application performance. Built modular and scalable front-end interfaces using ReactJS, TypeScript, and Next.js, delivering fast-loading, SEO-friendly web applications. Developed GraphQL APIs optimizing data retrieval by 10% through efficient query resolution for MongoDB.',
     technologies: ['Angular 7', 'TypeScript', 'HTML', 'CSS', 'Node.js', 'Express.js', 'ReactJS', 'Next.js', 'GraphQL', 'MongoDB', 'Python Scripting', 'AWS (EC2, S3, Lambda, RDS)'],
     link: '#',

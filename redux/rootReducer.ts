@@ -1,6 +1,6 @@
 // redux/rootReducer.ts
 import { combineReducers } from '@reduxjs/toolkit';
-import projectReducer from './slices/projectSlice'; // Example slice
+import projectReducer from './Slices/projectSlice'; // Example slice
 
 const rootReducer = combineReducers({
   projects: projectReducer, // Now safely include projectReducer
