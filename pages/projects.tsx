@@ -81,11 +81,11 @@ const Projects: NextPage = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
       >
-        Here are some of my significant projects from my **~20 years of experience**, showcasing my expertise in **Full Stack Development, Microservices, Cloud Architecture, and UI/UX**. Each project highlights my commitment to building robust, scalable, and efficient software solutions across various industries.
+        Here are some of my significant projects from my <strong>6 years of experience</strong>, showcasing my expertise in <strong>Full Stack Development, Microservices, Cloud Architecture, and UI/UX</strong>. Each project highlights my commitment to building robust, scalable, and efficient software solutions across various industries.
       </motion.p>
 
       <motion.div
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4"
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 px-4" /* Adjusted gap for mobile */
         variants={containerVariants}
         initial="hidden"
         animate="visible"

@@ -35,9 +35,10 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      {/* Hero Section - Adapted Two-Column Layout */}
-      <section className="hero-section mb-16 px-4 grid grid-cols-1 md:grid-cols-2 gap-8 items-center max-w-7xl mx-auto">
-        <div className="text-center md:text-left">
+      {/* Hero Section - Responsive layout adjustment */}
+      <section className="hero-section mb-16 px-4 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center max-w-7xl mx-auto">
+        {/* Text content for hero section */}
+        <div className="text-center md:text-left order-2 md:order-1"> {/* Order change for mobile: image first, then text */}
           <motion.p
             className="text-xl md:text-2xl text-text-medium mb-2 animate-fade-in-slide-up"
             variants={itemVariants}
@@ -52,26 +53,25 @@ const Home: NextPage = () => {
             <br />
             Full Stack Developer 👋
           </motion.h1>
+          {/* Buttons: stack vertically on mobile, horizontally on medium screens and up */}
           <motion.div className="mt-8 space-y-4 md:space-y-0 md:space-x-6 flex flex-col md:flex-row justify-center md:justify-start" variants={itemVariants}>
-            {/* Contact Me Button - Improved Gradient & Shadow */}
             <Link href="/contact" className="bg-gradient-to-r from-brand-primary to-brand-secondary hover:from-brand-secondary hover:to-brand-primary text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 ease-in-out transform hover:scale-105 shadow-soft-lg focus:outline-none focus:ring-4 focus:ring-brand-primary/30">
               Contact Me 📞
             </Link>
-            {/* View Resume Button - Improved Hover & Shadow */}
             <Link href="/resume" className="bg-transparent border-2 border-brand-primary text-brand-primary hover:bg-hover-light hover:text-brand-secondary font-bold py-3 px-8 rounded-full text-lg transition duration-300 ease-in-out transform hover:scale-105 shadow-md hover:shadow-card-hover focus:outline-none focus:ring-4 focus:ring-brand-primary/30">
               View Resume 📄
             </Link>
           </motion.div>
         </div>
 
+        {/* Profile Image container: responsive sizing and order */}
         <motion.div
-          className="flex justify-center md:justify-end animate-fade-in-scale"
+          className="flex justify-center md:justify-end order-1 md:order-2 mb-8 md:mb-0 animate-fade-in-scale"
           variants={itemVariants}
         >
-          {/* Card-base styling applied directly */}
-          <div className="w-64 h-64 md:w-80 md:h-80 rounded-3xl overflow-hidden bg-bg-card bg-opacity-90 backdrop-blur-lg border border-border-light shadow-soft-lg flex items-center justify-center p-4 transition-all duration-300 hover:shadow-soft-xl hover:-translate-y-0.5">
+          <div className="w-48 h-48 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-3xl overflow-hidden bg-bg-card bg-opacity-90 backdrop-blur-lg border border-border-light shadow-soft-lg flex items-center justify-center p-2 sm:p-4 transition-all duration-300 hover:shadow-soft-xl hover:-translate-y-0.5">
             <Image
-              src="/saiProfile.jpeg"
+              src="/saiProfile1.jpg"
               alt="Saikumar Pakkir Profile"
               width={320}
               height={320}
@@ -82,7 +82,7 @@ const Home: NextPage = () => {
         </motion.div>
       </section>
 
-      {/* About Section - Using Professional Summary */}
+      {/* About Section */}
       <section
         className="about-section mb-16 px-4 max-w-6xl mx-auto"
         variants={containerVariants}
@@ -101,8 +101,8 @@ const Home: NextPage = () => {
         </motion.p>
       </section>
 
-      {/* Technical Skills Section */}
-      <motion.section
+      {/* Technical Skills Section - Responsive grid adjustment */}
+      <section
         className="skills-summary mb-16 px-4 max-w-6xl mx-auto"
         variants={containerVariants}
       >
@@ -112,14 +112,14 @@ const Home: NextPage = () => {
         >
           Technical Expertise
         </motion.h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"> {/* Adjusted gap for mobile */}
           <SkillCategory title="Programming Languages" icon="💻" skills={['Java', 'Python', 'JavaScript', 'TypeScript']} />
           <SkillCategory title="Frameworks & Libraries" icon="🛠️" skills={['Spring Framework', 'Hibernate', 'Angular', 'ReactJS', 'NodeJS', 'GraphQL', 'Express.js', 'J2EE design patterns']} />
           <SkillCategory title="Cloud & DevOps" icon="☁️" skills={['Azure', 'AWS', 'Docker', 'Kubernetes', 'Terraform', 'CI/CD (GitHub Actions, Jenkins, Azure DevOps)']} />
           <SkillCategory title="Databases & Messaging" icon="🗄️" skills={['MongoDB', 'MySQL', 'Oracle', 'PostgreSQL', 'JMS', 'Kafka']} />
           <SkillCategory title="Tools & Methodologies" icon="⚙️" skills={['Git', 'GitHub', 'Maven', 'Gradle', 'RESTful/SOAP', 'Selenium', 'JUnit', 'Agile/Scrum', 'JIRA', 'Confluence', 'SonarQube', 'Dynatrace']} />
         </div>
-      </motion.section>
+      </section>
     </motion.div>
   );
 };
@@ -131,7 +131,6 @@ interface SkillCategoryProps {
 }
 
 const SkillCategory: React.FC<SkillCategoryProps> = ({ title, icon, skills }) => {
-  // Card-base styling applied directly
   return (
     <motion.div className="p-6 text-left h-full bg-bg-card bg-opacity-90 backdrop-blur-lg border border-border-light shadow-soft-lg transition-all duration-300 hover:shadow-soft-xl hover:-translate-y-0.5">
       <h3 className="text-xl font-semibold text-text-dark mb-4 flex items-center">
@@ -139,7 +138,6 @@ const SkillCategory: React.FC<SkillCategoryProps> = ({ title, icon, skills }) =>
       </h3>
       <div className="flex flex-wrap gap-2">
         {skills.map((skill, index) => (
-          // Skill highlight styling - vibrant background and subtle hover scale
           <span key={index} className="inline-block bg-brand-accent/10 text-brand-accent text-sm font-medium px-3 py-1 rounded-full mr-2 mb-2 transition-colors duration-200 hover:bg-brand-accent/20 transform hover:scale-105">
             {skill}
           </span>

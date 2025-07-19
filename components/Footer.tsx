@@ -8,7 +8,6 @@ const Footer: React.FC = () => {
       <div className="container mx-auto text-center text-sm">
         <p>&copy; {currentYear} Saikumar Pakkir. All rights reserved.</p>
         <p className="mt-2">
-          Crafted with ❤️ using **Next.js, React, Redux, and Tailwind CSS**.
         </p>
         <div className="mt-4 space-x-4">
           <a href="https://www.linkedin.com/in/saikumar-pakkir/" target="_blank" rel="noopener noreferrer" className="text-brand-primary hover:text-brand-secondary transition duration-300">

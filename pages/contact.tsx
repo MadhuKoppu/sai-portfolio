@@ -25,9 +25,8 @@ const Contact: NextPage = () => {
         Have a project in mind, a question about my work, or just want to chat about technology? I'm always open to discussing new opportunities and collaborations.
       </p>
 
-      {/* Card styling applied directly */}
       <motion.div
-        className="max-w-xl mx-auto p-8 md:p-10 shadow-soft-lg bg-bg-card bg-opacity-90 backdrop-blur-lg border border-border-light transition-all duration-300"
+        className="max-w-md mx-auto p-8 md:p-10 shadow-soft-lg bg-bg-card bg-opacity-90 backdrop-blur-lg border border-border-light transition-all duration-300" /* max-w-md for mobile/tablet */
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
