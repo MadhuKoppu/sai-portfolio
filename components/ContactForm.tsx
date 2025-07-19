@@ -13,7 +13,11 @@ const ContactForm: React.FC = () => {
     email: '',
     message: '',
   });
-  const [status, setStatus] = useState<'success' | 'error' | 'submitting' | ''>('');
+  const [status, setStatus] = useState<'success' | 'error' | 'submitting' | ''>(''); // 'success', 'error', 'submitting'
+
+  // IMPORTANT: Replace with your actual Formspree Endpoint
+  // You get this URL after creating a form on Formspree.io
+  const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xeozeobd'; // <<< REMEMBER TO REPLACE THIS!
 
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -21,17 +25,36 @@ const ContactForm: React.FC = () => {
   };
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+    e.preventDefault(); // Prevent default browser form submission
     setStatus('submitting');
 
     try {
-      console.log('Form Data:', formData);
-      await new Promise(resolve => setTimeout(resolve, 1500));
+      const response = await fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json' // Important for Formspree to return JSON
+        },
+        body: JSON.stringify(formData),
+      });
 
-      setStatus('success');
-      setFormData({ name: '', email: '', message: '' });
-    } catch (error) {
+      if (response.ok) {
+        setStatus('success');
+        setFormData({ name: '', email: '', message: '' }); // Clear form
+        // Formspree requires email confirmation for the first submission from a new domain/location
+        // You'll receive an email from Formspree to confirm and activate the form.
+      } else {
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Failed to send message via Formspree.');
+      }
+    } catch (error: unknown) { // FIX: Changed 'any' to 'unknown' for safer error handling
       console.error('Contact form submission error:', error);
+      // Safely check if error is an instance of Error before accessing its message property
+      if (error instanceof Error) {
+        console.error('Error message:', error.message);
+      } else if (typeof error === 'string') {
+        console.error('Error string:', error);
+      }
       setStatus('error');
     }
   };
@@ -74,7 +97,6 @@ const ContactForm: React.FC = () => {
           className="w-full px-4 py-3 border border-border-light rounded-lg shadow-sm focus:outline-none focus:border-brand-primary focus:ring-1 focus:ring-brand-primary transition-all duration-200 bg-bg-card/70 resize-y"
         ></textarea>
       </div>
-      {/* Send Message Button - Improved Gradient & Shadow */}
       <button
         type="submit"
         disabled={status === 'submitting'}
@@ -84,7 +106,7 @@ const ContactForm: React.FC = () => {
       </button>
 
       {status === 'success' && (
-        <p className="text-green-600 text-center mt-4 font-medium animate-fade-in-scale">Message sent successfully! Thank you. 🎉</p>
+        <p className="text-green-600 text-center mt-4 font-medium animate-fade-in-scale">Message sent successfully! 🎉 Check your email to confirm the form submission.</p>
       )}
       {status === 'error' && (
         <p className="text-red-600 text-center mt-4 font-medium animate-fade-in-scale">Failed to send message. Please try again. 😔</p>
