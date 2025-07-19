@@ -43,7 +43,7 @@ const Home: NextPage = () => {
             className="text-xl md:text-2xl text-text-medium mb-2 animate-fade-in-slide-up"
             variants={itemVariants}
           >
-            Hello, I'm
+            Hello, I&apos;m
           </motion.p>
           <motion.h1
             className="text-5xl md:text-6xl lg:text-7xl font-heading text-text-dark mb-6 leading-tight animate-fade-in-slide-up"
